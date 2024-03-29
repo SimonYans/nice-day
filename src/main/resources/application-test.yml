@@ -1,0 +1,9 @@
+server:
+  port: 8888
+
+base:
+  datasource:
+    jdbc-url: jdbc:mysql://106.15.192.244:3306/nice_day?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: Ysh@131021
+

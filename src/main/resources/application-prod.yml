@@ -1,0 +1,9 @@
+server:
+  port: 8888
+
+base:
+  datasource:
+    jdbc-url: jdbc:mysql://172.19.74.214:3306/nice_day?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: Ysh@131021
+    driver-class-name: com.mysql.cj.jdbc.Driver
