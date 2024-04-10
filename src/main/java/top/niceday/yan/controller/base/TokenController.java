@@ -1,8 +1,7 @@
 package top.niceday.yan.controller.base;
 
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

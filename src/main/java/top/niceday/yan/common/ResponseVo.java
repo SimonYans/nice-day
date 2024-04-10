@@ -64,6 +64,7 @@ public class ResponseVo<T> extends ApiResponse {
         this.currPage = currPage;
         this.data = data;
     }
+
     public static <T> ResponseVo<T> ok(T result) {
         ResponseVo<T> responseVo = new ResponseVo<>();
         responseVo.code = CODE;
@@ -97,6 +98,10 @@ public class ResponseVo<T> extends ApiResponse {
         responseVo.code = WebStatusEnum.SERVER_EXCEPTION.getCode();
         responseVo.msg = msg;
         return responseVo;
+    }
+
+    public static ResponseVo forbidden(String msg) {
+        return ResponseVo.error(401, msg);
     }
     public static <T> ResponseVo<T> ok(Integer totalCount, Integer pageSize, Integer totalPage, Integer currPage, T result) {
         return new ResponseVo<>(totalCount, pageSize, totalPage, currPage, CODE, MSG, result);

@@ -1,6 +1,6 @@
 package top.niceday.yan.service.base;
 
-import lombok.extern.slf4j.Slf4j;
+import com.auth0.jwt.interfaces.Claim;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -12,6 +12,8 @@ import top.niceday.yan.domain.base.User;
 import top.niceday.yan.domain.enums.MsgErrorEnum;
 import top.niceday.yan.utils.JwtUtil;
 import top.niceday.yan.utils.RSAUtil;
+
+import java.util.Map;
 
 /**
  * @author shuai.yan
@@ -57,4 +59,18 @@ public class TokenService {
         return JwtUtil.createToken(userId, auditUser, expireHour);
     }
 
+
+    public String verifyToken(String token) throws Exception {
+        String headerStr = "";
+        try {
+            Map<String, Claim> checkMap =  JwtUtil.verifyToken(token);
+            String userId = checkMap.get(JwtUtil.HEADER_USERID).asString();
+            String roleId = checkMap.get(JwtUtil.HEADER_ROLEID).asString();
+            String deptId = checkMap.get(JwtUtil.HEADER_DEPTID).asString();
+            headerStr = userId + "|" + roleId + "|" + deptId;
+        }catch (Exception e){
+            throw new BusinessException(MsgErrorEnum.NO_RIGHTS.getCode(), MsgErrorEnum.NO_RIGHTS.getMsg());
+        }
+        return headerStr;
+    }
 }

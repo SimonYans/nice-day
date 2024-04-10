@@ -3,7 +3,7 @@
 <mapper namespace="top.niceday.yan.dao.base.TokenMapper">
 
     <select id="login" resultType="top.niceday.yan.domain.base.User">
-        select * from user where username = ${loginForm.username} and password = ${loginForm.password}
+        select u.* from user u where u.username = #{loginForm.username} and u.password = #{loginForm.password}
     </select>
 
 </mapper>
